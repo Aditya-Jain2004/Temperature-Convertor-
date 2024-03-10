@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Temperature Converter</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-image 0.5s ease-in-out; /* Added transition effect */
+        background-repeat: no-repeat; /* Prevent background image repetition */
+        background-position: center; /* Center the background image */
+        background-size: cover; /* Cover the entire background area */
+    }
+    .converter {
+        width: 400px;
+        padding: 40px;
+        border: 2px solid #ccc;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.8);
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .input-group {
+        margin-bottom: 20px;
+    }
+    .input-group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    .input-group input,
+    .input-group select { /* Combined input and select styles */
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    .btn {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        cursor: pointer;
+    }
+    .result {
+        font-weight: bold;
+        text-align: center;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body style="background-image: url('https://www.calculator.land/wp-content/uploads/2022/12/temperature-converter-schema.jpg');"> <!-- Set initial background image -->
+<div class="converter">
+    <h2>Temperature Converter</h2>
+    <div class="input-group">
+        <label for="conversion">Conversion Direction:</label>
+        <select id="conversion" onchange="changeBackground()">
+            <option value="toCelsius">Fahrenheit to Celsius</option>
+            <option value="toFahrenheit">Celsius to Fahrenheit</option>
+        </select>
+    </div>
+    <div class="input-group">
+        <label for="temperature">Enter Temperature:</label>
+        <input type="number" id="temperature">
+    </div>
+    <button class="btn" onclick="convert()">Convert</button>
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+    function convert() {
+        var conversionType = document.getElementById('conversion').value;
+        var temperatureInput = document.getElementById('temperature').value;
+
+        if (temperatureInput !== '') {
+            if (conversionType === 'toCelsius') {
+                var celsius = (parseFloat(temperatureInput) - 32) * (5/9);
+                document.getElementById('result').innerText = temperatureInput + ' Fahrenheit = ' + celsius.toFixed(2) + ' Celsius';
+            } else if (conversionType === 'toFahrenheit') {
+                var fahrenheit = (parseFloat(temperatureInput) * (9/5)) + 32;
+                document.getElementById('result').innerText = temperatureInput + ' Celsius = ' + fahrenheit.toFixed(2) + ' Fahrenheit';
+            }
+        } else {
+            document.getElementById('result').innerText = 'Please enter a value.';
+        }
+    }
+
+    function changeBackground() {
+        var conversionType = document.getElementById('conversion').value;
+        var body = document.querySelector('body');
+        if (conversionType === 'toCelsius') {
+            body.style.backgroundImage = "url('https://www.calculator.land/wp-content/uploads/2022/12/temperature-converter-schema.jpg')";
+        } else if (conversionType === 'toFahrenheit') {
+            body.style.backgroundImage = "url('https://i.pinimg.com/600x315/36/c7/ec/36c7ecc0a674aea82631bd9ea311b770.jpg')";
+        }
+    }
+</script>
+
+</body>
+</html>
