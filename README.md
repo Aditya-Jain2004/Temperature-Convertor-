@@ -6,10 +6,10 @@ Conversion Options: Users can choose between converting from Fahrenheit to Celsi
 Real-Time Conversion: The application updates the result instantly as the user inputs the temperature value or changes the conversion direction.
 Visual Feedback: The background image dynamically changes based on the selected conversion direction, providing visual feedback to the user.
 Responsive Design: The interface is designed to be responsive, ensuring optimal display across various devices and screen sizes.
+
 Usage
 To use the temperature converter:
-
-Open the index.html file in a web browser.
+Open the html file in a web browser.
 Select the desired conversion direction from the dropdown menu.
 Enter the temperature value to be converted.
 Click the "Convert" button to see the converted temperature.
